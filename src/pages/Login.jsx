@@ -11,6 +11,7 @@ export default function Login() {
         <button>Login</button>
       </form>
       <Link to="/recover-password">Forgot password?</Link>
+      <br />
       <Link to="/sign-up">Create a new account</Link>
     </div>
   );
