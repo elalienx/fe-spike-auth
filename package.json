@@ -1,10 +1,12 @@
 {
-  "name": "fe-spike-auth",
+  "name": "fe3-spike-auth",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^9.17.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1"
   },
   "scripts": {
