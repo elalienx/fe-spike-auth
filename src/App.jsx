@@ -7,6 +7,7 @@ import RecoverPassword from "./pages/RecoverPassword";
 import SignUp from "./pages/SignUp";
 import SecretPage from "./pages/SecretPage";
 
+// Add a Context API to store the UID and then verify on BrowserRouter level for maximum secuity.
 export default function App() {
   return (
     <div className="App">
