@@ -20,7 +20,7 @@ export default function SignUp() {
 
     const result = await createAccount(email, password);
 
-    result.status === true ? onSucess(result) : onFailure(result);
+    result.status ? onSucess(result) : onFailure(result);
   }
 
   function onSucess(result) {
@@ -38,12 +38,14 @@ export default function SignUp() {
       <form onSubmit={(event) => onSubmit(event)}>
         {/* Note: Later we will add more fields here */}
         <input
+          placeholder="email"
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
         <br />
         <input
+          placeholder="password"
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}

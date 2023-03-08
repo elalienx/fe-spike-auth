@@ -19,7 +19,7 @@ export default function Login() {
 
     const result = await login(email, password);
 
-    result.status === true ? onSucess(result) : onFailure(result);
+    result.status ? onSucess(result) : onFailure(result);
   }
 
   function onSucess(result) {
@@ -36,12 +36,14 @@ export default function Login() {
       <h1>Login to continue studying</h1>
       <form onSubmit={(event) => onSubmit(event)}>
         <input
+          placeholder="email"
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
         <br />
         <input
+          placeholder="password"
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
