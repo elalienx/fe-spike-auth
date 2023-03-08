@@ -12,18 +12,30 @@ export async function createAccount(email, password) {
   let result = { status: false, payload: "", message: "" };
 
   try {
-    const user = await createUserWithEmailAndPassword(auth, email, password);
+    const data = await createUserWithEmailAndPassword(auth, email, password);
 
-    result = { status: true, payload: user.user.uid, message: "Created!" };
+    result = { status: true, payload: data.user.uid, message: "Created!" };
   } catch (error) {
-    result.message = `Cannot create account, ${error.code}!`;
+    result.message = error.code;
   }
 
   return result;
 }
 
 // if correct, it returns the UID
-export async function login(email, password) {}
+export async function login(email, password) {
+  let result = { status: false, payload: "", message: "" };
+
+  try {
+    const data = await signInWithEmailAndPassword(auth, email, password);
+
+    result = { status: true, payload: data.user.uid, message: "Logged in!" };
+  } catch (error) {
+    result.message = error.code;
+  }
+
+  return result;
+}
 
 // if correct, it sents an email to reset password
 export async function recoverAccount(email) {}

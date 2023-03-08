@@ -24,12 +24,12 @@ export default function SignUp() {
   }
 
   function onSucess(result) {
-    // note: store the uid in the context api (in the future)
+    // Refactor note: store the uid in the context api (in the future)
     navigate("/secret-page");
   }
 
   function onFailure(result) {
-    alert(result.message);
+    alert(`Cannot create an account, ${result.message}`);
   }
 
   return (
