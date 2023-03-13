@@ -6,10 +6,10 @@ const Context = createContext();
 
 export function UserProvider({ children }) {
   // Local state
-  const [user, setUser] = useState("");
+  const [uid, setUid] = useState("");
 
   // Properties
-  const value = { user, setUser };
+  const value = { uid, setUid };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }

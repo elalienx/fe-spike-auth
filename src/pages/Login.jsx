@@ -4,10 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 // Project files
 import { login } from "../scripts/auth";
+import { useUser } from "../state/UserState";
 
 export default function Login() {
   // Global state
   const navigate = useNavigate();
+  const { uid, setUid } = useUser();
+  console.log("Are we logged in? user", uid);
 
   // Local state
   const [email, setEmail] = useState("");
@@ -24,6 +27,7 @@ export default function Login() {
 
   function onSucess(result) {
     // Refactor: note, we need to store the uid
+    setUid(result.payload);
     navigate("/secret-page");
   }
 
