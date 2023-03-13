@@ -9,12 +9,12 @@ import { useUser } from "../state/UserState";
 export default function Login() {
   // Global state
   const navigate = useNavigate();
-  const { uid, setUid } = useUser();
-  console.log("Are we logged in? user", uid);
+  const { setUid, saveUID } = useUser();
 
   // Local state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
 
   // Methods
   async function onSubmit(event) {
@@ -26,7 +26,11 @@ export default function Login() {
   }
 
   function onSucess(result) {
-    // Refactor: note, we need to store the uid
+    if (remember) {
+      console.log("Login.jsx preparing to save...", result.payload);
+      saveUID(result.payload);
+    }
+
     setUid(result.payload);
     navigate("/secret-page");
   }
@@ -52,6 +56,15 @@ export default function Login() {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
+        <br />
+        <label>
+          <input
+            type="checkbox"
+            checked={remember}
+            onChange={() => setRemember(!remember)}
+          />
+          Remember me
+        </label>
         <br />
         <button>Login</button>
       </form>
